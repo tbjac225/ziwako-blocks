@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "logo",
+  "title": "Logo",
+  "description": "Brand logo link (image + optional wordmark).",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "src/blocks/logo.tsx",
+      "content": "import Link from \"next/link\"\nimport Image from \"next/image\"\n\nimport { cn } from \"@ziwako/ui/utils\"\n\nexport interface LogoProps {\n  href?: string\n  src?: string\n  alt?: string\n  wordmark?: string\n  width?: number\n  height?: number\n  className?: string\n  priority?: boolean\n}\n\nexport function Logo({\n  href = \"/\",\n  src = \"/ziwako.svg\",\n  alt = \"Ziwako\",\n  wordmark,\n  width = 100,\n  height = 32,\n  className,\n  priority,\n}: LogoProps) {\n  return (\n    <Link href={href} className={cn(\"flex items-center gap-2\", className)}>\n      <Image\n        src={src}\n        alt={alt}\n        width={width}\n        height={height}\n        className=\"h-8 w-auto\"\n        priority={priority}\n      />\n      {wordmark ? (\n        <span className=\"text-xl font-bold text-foreground\">{wordmark}</span>\n      ) : null}\n    </Link>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM",
+  "type": "registry:block"
+}

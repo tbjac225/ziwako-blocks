@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "section",
+  "title": "Section",
+  "description": "Generic page section wrapper with max-w container and horizontal padding.",
+  "dependencies": [
+    "@ziwako/ui"
+  ],
+  "files": [
+    {
+      "path": "src/blocks/section.tsx",
+      "content": "import type { ReactNode } from \"react\"\n\nimport { cn } from \"@ziwako/ui/utils\"\n\nexport interface SectionProps {\n  children: ReactNode\n  id?: string\n  className?: string\n  containerClassName?: string\n}\n\nexport function Section({\n  children,\n  id,\n  className,\n  containerClassName,\n}: SectionProps) {\n  return (\n    <section id={id} className={cn(\"py-12\", className)}>\n      <div\n        className={cn(\n          \"mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8\",\n          containerClassName\n        )}\n      >\n        {children}\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM",
+  "type": "registry:block"
+}

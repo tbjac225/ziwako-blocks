@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cta",
+  "title": "CTA Section",
+  "description": "Full-width call-to-action banner with heading, dual buttons and media.",
+  "dependencies": [
+    "@ziwako/ui"
+  ],
+  "files": [
+    {
+      "path": "src/blocks/cta.tsx",
+      "content": "import Link from \"next/link\"\nimport Image from \"next/image\"\n\nimport { Button } from \"@ziwako/ui/button\"\nimport { cn } from \"@ziwako/ui/utils\"\n\nexport interface CtaProps {\n  heading?: string\n  primaryButtonText?: string\n  primaryButtonHref?: string\n  secondaryButtonText?: string\n  secondaryButtonHref?: string\n  imageSrc?: string\n  imageAlt?: string\n  className?: string\n}\n\nexport function Cta({\n  heading = \"Tous vos services et compétences, dans votre poche.\",\n  primaryButtonText = \"Télécharger l'app\",\n  primaryButtonHref = \"/telechargement\",\n  secondaryButtonText = \"Découvrir les produits\",\n  secondaryButtonHref = \"/produits\",\n  imageSrc = \"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg\",\n  imageAlt = \"App\",\n  className,\n}: CtaProps) {\n  return (\n    <section className={cn(\"py-32\", className)}>\n      <div className=\"container mx-auto\">\n        <div className=\"bg-muted flex w-full flex-col gap-16 overflow-hidden rounded-2xl p-8 md:rounded-3xl lg:flex-row lg:items-center lg:p-12\">\n          <div className=\"flex-1\">\n            <h3 className=\"mb-3 text-2xl font-extrabold md:mb-4 md:text-6xl lg:mb-6\">\n              {heading}\n            </h3>\n            <div className=\"mt-6 flex flex-col gap-4 sm:flex-row sm:items-center\">\n              <Button\n                asChild\n                size=\"lg\"\n                className=\"h-16 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-8 py-6 text-lg text-white hover:from-orange-600 hover:to-orange-700\"\n              >\n                <Link href={primaryButtonHref}>{primaryButtonText}</Link>\n              </Button>\n              <Button\n                asChild\n                variant=\"outline\"\n                size=\"lg\"\n                className=\"h-16 rounded-full border-border px-8 py-6 text-lg text-foreground hover:bg-card\"\n              >\n                <Link href={secondaryButtonHref}>{secondaryButtonText}</Link>\n              </Button>\n            </div>\n          </div>\n          <div className=\"shrink-0\">\n            <div className=\"flex flex-col justify-center gap-4 sm:flex-row sm:items-center\">\n              <div className=\"relative h-70 w-full overflow-hidden rounded-3xl bg-gradient-to-br from-blue-100 to-violet-100 sm:h-80 sm:w-80 md:h-64 md:w-64 dark:from-blue-900/40 dark:to-violet-900/40\">\n                <Image\n                  src={imageSrc}\n                  alt={imageAlt}\n                  className=\"object-cover\"\n                  fill\n                />\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM",
+  "type": "registry:block"
+}

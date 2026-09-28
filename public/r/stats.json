@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stats",
+  "title": "Stats",
+  "description": "Impact metrics block: heading, description and gradient-value stat grid.",
+  "dependencies": [
+    "@ziwako/ui"
+  ],
+  "files": [
+    {
+      "path": "src/blocks/stats.tsx",
+      "content": "import { cn } from \"@ziwako/ui/utils\"\n\nexport interface StatItem {\n  value: string\n  label: string\n  description?: string\n}\n\nexport interface StatsProps {\n  heading?: string\n  description?: string\n  items: StatItem[]\n  className?: string\n}\n\nexport function Stats({ heading, description, items, className }: StatsProps) {\n  return (\n    <div className={cn(\"bg-background py-20\", className)}>\n      <div className=\"mx-auto w-full max-w-(--breakpoint-xl) px-6 py-12 xl:px-0\">\n        {heading ? (\n          <h2 className=\"text-4xl font-medium tracking-[-0.04em] md:text-[2.75rem]\">\n            {heading}\n          </h2>\n        ) : null}\n        {description ? (\n          <p className=\"mt-4.5 max-w-2xl text-lg text-muted-foreground md:text-xl\">\n            {description}\n          </p>\n        ) : null}\n        <div className=\"mt-16 grid justify-center gap-x-10 gap-y-16 sm:mt-24 sm:grid-cols-2 lg:grid-cols-4\">\n          {items.map((item) => (\n            <div key={item.value}>\n              <span className=\"bg-gradient-to-r from-primary to-secondary bg-clip-text text-5xl font-medium tracking-tight text-transparent md:text-6xl\">\n                {item.value}\n              </span>\n              <p className=\"mt-6 text-xl font-medium text-foreground\">\n                {item.label}\n              </p>\n              {item.description ? (\n                <p className=\"mt-2 text-muted-foreground\">\n                  {item.description}\n                </p>\n              ) : null}\n            </div>\n          ))}\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM",
+  "type": "registry:block"
+}

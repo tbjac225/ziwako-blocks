@@ -1,0 +1,114 @@
+{
+  "name": "@ziwako/blocks",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Shared prop-ified marketing/layout blocks for the Ziwako ecosystem (web).",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./theme-toggle": {
+      "types": "./dist/blocks/theme-toggle.d.ts",
+      "import": "./dist/blocks/theme-toggle.js",
+      "default": "./dist/blocks/theme-toggle.js"
+    },
+    "./logo": {
+      "types": "./dist/blocks/logo.d.ts",
+      "import": "./dist/blocks/logo.js",
+      "default": "./dist/blocks/logo.js"
+    },
+    "./cta": {
+      "types": "./dist/blocks/cta.d.ts",
+      "import": "./dist/blocks/cta.js",
+      "default": "./dist/blocks/cta.js"
+    },
+    "./hero": {
+      "types": "./dist/blocks/hero.d.ts",
+      "import": "./dist/blocks/hero.js",
+      "default": "./dist/blocks/hero.js"
+    },
+    "./features": {
+      "types": "./dist/blocks/features.d.ts",
+      "import": "./dist/blocks/features.js",
+      "default": "./dist/blocks/features.js"
+    },
+    "./testimonials": {
+      "types": "./dist/blocks/testimonials.d.ts",
+      "import": "./dist/blocks/testimonials.js",
+      "default": "./dist/blocks/testimonials.js"
+    },
+    "./navbar": {
+      "types": "./dist/blocks/navbar.d.ts",
+      "import": "./dist/blocks/navbar.js",
+      "default": "./dist/blocks/navbar.js"
+    },
+    "./footer": {
+      "types": "./dist/blocks/footer.d.ts",
+      "import": "./dist/blocks/footer.js",
+      "default": "./dist/blocks/footer.js"
+    },
+    "./page-header": {
+      "types": "./dist/blocks/page-header.d.ts",
+      "import": "./dist/blocks/page-header.js",
+      "default": "./dist/blocks/page-header.js"
+    },
+    "./marquee": {
+      "types": "./dist/blocks/marquee.d.ts",
+      "import": "./dist/blocks/marquee.js",
+      "default": "./dist/blocks/marquee.js"
+    },
+    "./reveal": {
+      "types": "./dist/blocks/reveal.d.ts",
+      "import": "./dist/blocks/reveal.js",
+      "default": "./dist/blocks/reveal.js"
+    },
+    "./section": {
+      "types": "./dist/blocks/section.d.ts",
+      "import": "./dist/blocks/section.js",
+      "default": "./dist/blocks/section.js"
+    },
+    "./stats": {
+      "types": "./dist/blocks/stats.d.ts",
+      "import": "./dist/blocks/stats.js",
+      "default": "./dist/blocks/stats.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "registry.json",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup",
+    "registry": "shadcn build registry.json --output public/r",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "@ziwako/ui": "^0.1.3",
+    "next": ">=14",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "dependencies": {
+    "lucide-react": "^0.556.0",
+    "next-themes": "^0.4.6"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@ziwako/ui": "file:../ui",
+    "next": "^16.2.3",
+    "next-themes": "^0.4.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0"
+  }
+}

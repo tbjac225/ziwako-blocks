@@ -1,0 +1,131 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "ziwako",
+  "homepage": "https://github.com/tbjac225/ziwako-blocks",
+  "items": [
+    {
+      "name": "theme-toggle",
+      "type": "registry:block",
+      "title": "Theme Toggle",
+      "description": "Light/dark theme toggle button (hydration-safe, next-themes).",
+      "dependencies": ["@ziwako/ui", "next-themes", "lucide-react"],
+      "files": [
+        { "path": "src/blocks/theme-toggle.tsx", "type": "registry:block" }
+      ],
+      "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
+    },
+    {
+      "name": "logo",
+      "type": "registry:block",
+      "title": "Logo",
+      "description": "Brand logo link (image + optional wordmark).",
+      "dependencies": [],
+      "files": [{ "path": "src/blocks/logo.tsx", "type": "registry:block" }],
+      "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
+    },
+    {
+      "name": "cta",
+      "type": "registry:block",
+      "title": "CTA Section",
+      "description": "Full-width call-to-action banner with heading, dual buttons and media.",
+      "dependencies": ["@ziwako/ui"],
+      "files": [{ "path": "src/blocks/cta.tsx", "type": "registry:block" }],
+      "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
+    },
+    {
+      "name": "hero",
+      "type": "registry:block",
+      "title": "Hero",
+      "description": "Above-the-fold marketing hero: title, highlight, subtitle, store badge + CTA.",
+      "dependencies": ["@ziwako/ui", "lucide-react"],
+      "files": [{ "path": "src/blocks/hero.tsx", "type": "registry:block" }],
+      "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
+    },
+    {
+      "name": "features",
+      "type": "registry:block",
+      "title": "Features",
+      "description": "Responsive feature grid with icon tiles, title, description and optional link.",
+      "dependencies": ["@ziwako/ui", "lucide-react"],
+      "files": [{ "path": "src/blocks/features.tsx", "type": "registry:block" }],
+      "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
+    },
+    {
+      "name": "testimonials",
+      "type": "registry:block",
+      "title": "Testimonials",
+      "description": "Testimonial carousel with avatars, stars and dot pagination.",
+      "dependencies": ["@ziwako/ui", "lucide-react"],
+      "files": [
+        { "path": "src/blocks/testimonials.tsx", "type": "registry:block" }
+      ],
+      "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
+    },
+    {
+      "name": "navbar",
+      "type": "registry:block",
+      "title": "Navbar (marketing)",
+      "description": "Sticky glass marketing navbar: logo slot, desktop dropdown menu, theme toggle, CTA and mobile sheet.",
+      "dependencies": ["@ziwako/ui", "lucide-react", "next-themes"],
+      "files": [{ "path": "src/blocks/navbar.tsx", "type": "registry:block" }],
+      "registryDependencies": ["@ziwako/theme-toggle"],
+      "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
+    },
+    {
+      "name": "footer",
+      "type": "registry:block",
+      "title": "Footer",
+      "description": "Marketing footer with link columns, brand, copyright and social icons.",
+      "dependencies": ["lucide-react"],
+      "files": [{ "path": "src/blocks/footer.tsx", "type": "registry:block" }],
+      "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
+    },
+    {
+      "name": "page-header",
+      "type": "registry:block",
+      "title": "Page Header",
+      "description": "Standard page header: breadcrumb, title, description and actions.",
+      "dependencies": ["@ziwako/ui"],
+      "files": [
+        { "path": "src/blocks/page-header.tsx", "type": "registry:block" }
+      ],
+      "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
+    },
+    {
+      "name": "marquee",
+      "type": "registry:block",
+      "title": "Marquee",
+      "description": "Generic CSS marquee (horizontal/vertical, reverse, pause-on-hover).",
+      "dependencies": ["@ziwako/ui"],
+      "files": [{ "path": "src/blocks/marquee.tsx", "type": "registry:block" }],
+      "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
+    },
+    {
+      "name": "reveal",
+      "type": "registry:block",
+      "title": "Reveal",
+      "description": "Scroll-reveal wrapper (IntersectionObserver, opacity + translate).",
+      "dependencies": [],
+      "files": [{ "path": "src/blocks/reveal.tsx", "type": "registry:block" }],
+      "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
+    },
+    {
+      "name": "section",
+      "type": "registry:block",
+      "title": "Section",
+      "description": "Generic page section wrapper with max-w container and horizontal padding.",
+      "dependencies": ["@ziwako/ui"],
+      "files": [{ "path": "src/blocks/section.tsx", "type": "registry:block" }],
+      "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
+    },
+    {
+      "name": "stats",
+      "type": "registry:block",
+      "title": "Stats",
+      "description": "Impact metrics block: heading, description and gradient-value stat grid.",
+      "dependencies": ["@ziwako/ui"],
+      "files": [{ "path": "src/blocks/stats.tsx", "type": "registry:block" }],
+      "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
+    }
+  ]
+}

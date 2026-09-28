@@ -1,0 +1,36 @@
+import { defineConfig } from 'tsup'
+
+export default defineConfig({
+  entry: {
+    index: 'src/index.ts',
+    'blocks/theme-toggle': 'src/blocks/theme-toggle.tsx',
+    'blocks/logo': 'src/blocks/logo.tsx',
+    'blocks/cta': 'src/blocks/cta.tsx',
+    'blocks/hero': 'src/blocks/hero.tsx',
+    'blocks/features': 'src/blocks/features.tsx',
+    'blocks/testimonials': 'src/blocks/testimonials.tsx',
+    'blocks/navbar': 'src/blocks/navbar.tsx',
+    'blocks/footer': 'src/blocks/footer.tsx',
+    'blocks/page-header': 'src/blocks/page-header.tsx',
+    'blocks/marquee': 'src/blocks/marquee.tsx',
+    'blocks/reveal': 'src/blocks/reveal.tsx',
+    'blocks/section': 'src/blocks/section.tsx',
+    'blocks/stats': 'src/blocks/stats.tsx',
+  },
+  format: ['esm'],
+  dts: true,
+  splitting: false,
+  sourcemap: true,
+  clean: true,
+  external: [
+    'react',
+    'react-dom',
+    'next',
+    /^next\//,
+    'next-themes',
+    'lucide-react',
+    /^@ziwako\/ui/,
+  ],
+  treeshake: true,
+  minify: false,
+})

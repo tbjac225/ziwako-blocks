@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "reveal",
+  "title": "Reveal",
+  "description": "Scroll-reveal wrapper (IntersectionObserver, opacity + translate).",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "src/blocks/reveal.tsx",
+      "content": "\"use client\"\n\nimport { useEffect, useRef, useState, type ReactNode } from \"react\"\n\nexport interface RevealProps {\n  children: ReactNode\n  delay?: number\n  direction?: \"up\" | \"down\" | \"left\" | \"right\" | \"none\"\n  className?: string\n}\n\nexport function Reveal({\n  children,\n  delay = 0,\n  direction = \"up\",\n  className = \"\",\n}: RevealProps) {\n  const [isVisible, setIsVisible] = useState(false)\n  const ref = useRef<HTMLDivElement>(null)\n\n  useEffect(() => {\n    const observer = new IntersectionObserver(\n      ([entry]) => {\n        if (entry.isIntersecting) {\n          setIsVisible(true)\n          observer.disconnect()\n        }\n      },\n      { threshold: 0.1 }\n    )\n\n    if (ref.current) {\n      observer.observe(ref.current)\n    }\n\n    return () => observer.disconnect()\n  }, [])\n\n  const getTransform = () => {\n    if (direction === \"none\") return \"translateY(0)\"\n    const distance = \"20px\"\n    switch (direction) {\n      case \"up\":\n        return `translateY(${distance})`\n      case \"down\":\n        return `translateY(-${distance})`\n      case \"left\":\n        return `translateX(${distance})`\n      case \"right\":\n        return `translateX(-${distance})`\n      default:\n        return `translateY(${distance})`\n    }\n  }\n\n  return (\n    <div\n      ref={ref}\n      className={className}\n      style={{\n        opacity: isVisible ? 1 : 0,\n        transform: isVisible ? \"translate(0)\" : getTransform(),\n        transition: `opacity 0.6s ease-out ${delay}ms, transform 0.6s ease-out ${delay}ms`,\n      }}\n    >\n      {children}\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM",
+  "type": "registry:block"
+}

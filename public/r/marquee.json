@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee",
+  "title": "Marquee",
+  "description": "Generic CSS marquee (horizontal/vertical, reverse, pause-on-hover).",
+  "dependencies": [
+    "@ziwako/ui"
+  ],
+  "files": [
+    {
+      "path": "src/blocks/marquee.tsx",
+      "content": "import type { ComponentPropsWithoutRef, ReactNode } from \"react\"\n\nimport { cn } from \"@ziwako/ui/utils\"\n\nexport interface MarqueeProps extends ComponentPropsWithoutRef<\"div\"> {\n  /** Reverse the animation direction. @default false */\n  reverse?: boolean\n  /** Pause the animation on hover. @default false */\n  pauseOnHover?: boolean\n  /** Animate vertically instead of horizontally. @default false */\n  vertical?: boolean\n  /** Number of times to repeat the content. @default 4 */\n  repeat?: number\n  children: ReactNode\n}\n\nexport function Marquee({\n  className,\n  reverse = false,\n  pauseOnHover = false,\n  children,\n  vertical = false,\n  repeat = 4,\n  ...props\n}: MarqueeProps) {\n  return (\n    <>\n      <style>\n        {`\n          @keyframes marquee {\n            from { transform: translateX(0); }\n            to { transform: translateX(calc(-100% - var(--gap))); }\n          }\n          @keyframes marquee-vertical {\n            from { transform: translateY(0); }\n            to { transform: translateY(calc(-100% - var(--gap))); }\n          }\n          .animate-marquee { animation: marquee var(--duration) linear infinite; }\n          .animate-marquee-vertical { animation: marquee-vertical var(--duration) linear infinite; }\n          .animate-reverse { animation-direction: reverse !important; }\n          .pause-on-hover:hover .animate-marquee,\n          .pause-on-hover:hover .animate-marquee-vertical { animation-play-state: paused !important; }\n        `}\n      </style>\n      <div\n        {...props}\n        className={cn(\n          \"group flex gap-(--gap) overflow-hidden p-2 [--duration:40s] [--gap:1rem]\",\n          {\n            \"flex-row\": !vertical,\n            \"flex-col\": vertical,\n            \"pause-on-hover\": pauseOnHover,\n          },\n          className\n        )}\n      >\n        {Array(repeat)\n          .fill(0)\n          .map((_, i) => (\n            <div\n              key={i}\n              className={cn(\"flex shrink-0 justify-around gap-(--gap)\", {\n                \"animate-marquee flex-row\": !vertical,\n                \"animate-marquee-vertical flex-col\": vertical,\n                \"animate-reverse\": reverse,\n              })}\n            >\n              {children}\n            </div>\n          ))}\n      </div>\n    </>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM",
+  "type": "registry:block"
+}

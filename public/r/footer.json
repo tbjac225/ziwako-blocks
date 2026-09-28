@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer",
+  "title": "Footer",
+  "description": "Marketing footer with link columns, brand, copyright and social icons.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "src/blocks/footer.tsx",
+      "content": "import type { LucideIcon } from \"lucide-react\"\nimport Link from \"next/link\"\n\nimport { cn } from \"@ziwako/ui/utils\"\n\nexport interface FooterLink {\n  name: string\n  href: string\n}\n\nexport interface FooterColumn {\n  title: string\n  links: FooterLink[]\n}\n\nexport interface FooterSocial {\n  name: string\n  href: string\n  icon: LucideIcon\n}\n\nexport interface FooterProps {\n  columns: FooterColumn[]\n  socials?: FooterSocial[]\n  brand?: string\n  copyright?: string\n  className?: string\n}\n\nexport function Footer({\n  columns,\n  socials = [],\n  brand = \"Ziwako\",\n  copyright,\n  className,\n}: FooterProps) {\n  const year = new Date().getFullYear()\n\n  return (\n    <footer className={cn(\"border-t border-border bg-card\", className)}>\n      <div className=\"mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16\">\n        <div className=\"grid grid-cols-2 gap-8 md:grid-cols-4 lg:gap-12\">\n          {columns.map((column) => (\n            <div key={column.title}>\n              <h3 className=\"text-sm font-semibold text-foreground\">\n                {column.title}\n              </h3>\n              <ul className=\"mt-4 space-y-3\">\n                {column.links.map((link) => (\n                  <li key={link.name}>\n                    <Link\n                      href={link.href}\n                      className=\"text-sm text-muted-foreground transition-colors hover:text-foreground\"\n                    >\n                      {link.name}\n                    </Link>\n                  </li>\n                ))}\n              </ul>\n            </div>\n          ))}\n        </div>\n\n        <div className=\"mt-12 border-t border-border pt-8\">\n          <div className=\"flex flex-col items-center justify-between gap-6 md:flex-row\">\n            <div className=\"flex items-center space-x-8\">\n              <Link href=\"/\" className=\"text-xl font-semibold text-foreground\">\n                {brand}\n              </Link>\n              <p className=\"text-sm text-muted-foreground\">\n                {copyright ?? `© ${year} ${brand}. Tous droits réservés.`}\n              </p>\n            </div>\n\n            {socials.length > 0 ? (\n              <div className=\"flex items-center space-x-6\">\n                {socials.map((social) => {\n                  const Icon = social.icon\n                  return (\n                    <a\n                      key={social.name}\n                      href={social.href}\n                      className=\"text-muted-foreground transition-colors hover:text-foreground\"\n                      target=\"_blank\"\n                      rel=\"noopener noreferrer\"\n                    >\n                      <span className=\"sr-only\">{social.name}</span>\n                      <Icon className=\"h-5 w-5\" aria-hidden=\"true\" />\n                    </a>\n                  )\n                })}\n              </div>\n            ) : null}\n          </div>\n        </div>\n      </div>\n    </footer>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM",
+  "type": "registry:block"
+}

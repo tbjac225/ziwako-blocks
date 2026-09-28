@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "theme-toggle",
+  "title": "Theme Toggle",
+  "description": "Light/dark theme toggle button (hydration-safe, next-themes).",
+  "dependencies": [
+    "@ziwako/ui",
+    "next-themes",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "src/blocks/theme-toggle.tsx",
+      "content": "\"use client\"\n\nimport { useEffect, useState } from \"react\"\nimport { useTheme } from \"next-themes\"\nimport { Moon, Sun } from \"lucide-react\"\n\nimport { Button } from \"@ziwako/ui/button\"\n\nexport interface ThemeToggleProps {\n  className?: string\n  ariaLabel?: string\n}\n\nexport function ThemeToggle({\n  className,\n  ariaLabel = \"Toggle theme\",\n}: ThemeToggleProps) {\n  const { resolvedTheme, setTheme } = useTheme()\n  const [mounted, setMounted] = useState(false)\n\n  useEffect(() => setMounted(true), [])\n\n  if (!mounted) {\n    return (\n      <Button\n        variant=\"ghost\"\n        size=\"icon\"\n        className={className}\n        aria-label={ariaLabel}\n      >\n        <Sun className=\"size-4 opacity-0\" />\n      </Button>\n    )\n  }\n\n  const isDark = resolvedTheme === \"dark\"\n\n  return (\n    <Button\n      variant=\"ghost\"\n      size=\"icon\"\n      className={className}\n      aria-label={ariaLabel}\n      onClick={() => setTheme(isDark ? \"light\" : \"dark\")}\n    >\n      {isDark ? <Sun className=\"size-4\" /> : <Moon className=\"size-4\" />}\n    </Button>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM",
+  "type": "registry:block"
+}

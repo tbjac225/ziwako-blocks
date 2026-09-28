@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "page-header",
+  "title": "Page Header",
+  "description": "Standard page header: breadcrumb, title, description and actions.",
+  "dependencies": [
+    "@ziwako/ui"
+  ],
+  "files": [
+    {
+      "path": "src/blocks/page-header.tsx",
+      "content": "import type { ReactNode } from \"react\"\nimport Link from \"next/link\"\n\nimport {\n  Breadcrumb,\n  BreadcrumbItem,\n  BreadcrumbLink,\n  BreadcrumbList,\n  BreadcrumbPage,\n  BreadcrumbSeparator,\n} from \"@ziwako/ui/breadcrumb\"\nimport { cn } from \"@ziwako/ui/utils\"\n\nexport interface PageHeaderBreadcrumb {\n  label: string\n  href?: string\n}\n\nexport interface PageHeaderProps {\n  title: string\n  description?: string\n  breadcrumb?: PageHeaderBreadcrumb[]\n  actions?: ReactNode\n  className?: string\n}\n\nexport function PageHeader({\n  title,\n  description,\n  breadcrumb,\n  actions,\n  className,\n}: PageHeaderProps) {\n  return (\n    <header\n      className={cn(\n        \"mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8\",\n        className\n      )}\n    >\n      {breadcrumb && breadcrumb.length > 0 ? (\n        <Breadcrumb className=\"mb-4\">\n          <BreadcrumbList>\n            {breadcrumb.map((item, index) => {\n              const isLast = index === breadcrumb.length - 1\n              return (\n                <div key={item.label} className=\"contents\">\n                  <BreadcrumbItem>\n                    {isLast || !item.href ? (\n                      <BreadcrumbPage>{item.label}</BreadcrumbPage>\n                    ) : (\n                      <BreadcrumbLink asChild>\n                        <Link href={item.href}>{item.label}</Link>\n                      </BreadcrumbLink>\n                    )}\n                  </BreadcrumbItem>\n                  {!isLast ? (\n                    <BreadcrumbSeparator className=\"hidden md:block\" />\n                  ) : null}\n                </div>\n              )\n            })}\n          </BreadcrumbList>\n        </Breadcrumb>\n      ) : null}\n\n      <div className=\"flex flex-col gap-4 md:flex-row md:items-end md:justify-between\">\n        <div>\n          <h1 className=\"text-3xl font-bold text-foreground md:text-4xl\">\n            {title}\n          </h1>\n          {description ? (\n            <p className=\"mt-2 text-muted-foreground\">{description}</p>\n          ) : null}\n        </div>\n        {actions ? <div className=\"flex items-center gap-2\">{actions}</div> : null}\n      </div>\n    </header>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM",
+  "type": "registry:block"
+}

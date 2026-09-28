@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero",
+  "title": "Hero",
+  "description": "Above-the-fold marketing hero: title, highlight, subtitle, store badge + CTA.",
+  "dependencies": [
+    "@ziwako/ui",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "src/blocks/hero.tsx",
+      "content": "import type { ReactNode } from \"react\"\nimport Link from \"next/link\"\nimport Image from \"next/image\"\nimport { ArrowRight } from \"lucide-react\"\n\nimport { Button } from \"@ziwako/ui/button\"\nimport { cn } from \"@ziwako/ui/utils\"\n\nexport interface HeroCta {\n  label: string\n  href: string\n  external?: boolean\n}\n\nexport interface HeroStoreBadge {\n  href: string\n  imageSrc: string\n  imageAlt?: string\n  width?: number\n  height?: number\n}\n\nexport interface HeroProps {\n  title: ReactNode\n  titleHighlight?: ReactNode\n  subtitle?: ReactNode\n  primaryCta?: HeroCta\n  storeBadge?: HeroStoreBadge\n  className?: string\n}\n\nexport function Hero({\n  title,\n  titleHighlight,\n  subtitle,\n  primaryCta,\n  storeBadge,\n  className,\n}: HeroProps) {\n  return (\n    <div\n      className={cn(\n        \"flex min-h-[400px] w-full flex-col items-center justify-center gap-16 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-white px-6 py-16 dark:from-blue-900/30 dark:via-purple-900/20 dark:to-background\",\n        className\n      )}\n    >\n      <div className=\"max-w-4xl text-center\">\n        <h1 className=\"mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl md:leading-[1.2] lg:text-7xl\">\n          {title}\n          {titleHighlight ? (\n            <>\n              {\" \"}\n              <span className=\"text-orange-solid\">{titleHighlight}</span>\n            </>\n          ) : null}\n        </h1>\n        {subtitle ? (\n          <h2 className=\"mx-auto mt-3 max-w-3xl text-lg leading-relaxed text-foreground/80 md:text-3xl\">\n            {subtitle}\n          </h2>\n        ) : null}\n        {(storeBadge || primaryCta) && (\n          <div className=\"mt-10 flex flex-col items-center justify-center gap-6 sm:flex-row\">\n            {storeBadge ? (\n              <Link\n                href={storeBadge.href}\n                target=\"_blank\"\n                rel=\"noopener noreferrer\"\n              >\n                <Image\n                  src={storeBadge.imageSrc}\n                  alt={storeBadge.imageAlt ?? \"Get it on Google Play\"}\n                  width={storeBadge.width ?? 230}\n                  height={storeBadge.height ?? 100}\n                />\n              </Link>\n            ) : null}\n            {primaryCta ? (\n              <Button\n                size=\"lg\"\n                className=\"h-16 bg-orange-solid px-8 py-6 text-base hover:bg-orange-700\"\n                asChild\n              >\n                <Link\n                  href={primaryCta.href}\n                  target={primaryCta.external ? \"_blank\" : undefined}\n                  rel={primaryCta.external ? \"noopener noreferrer\" : undefined}\n                  className=\"text-xl font-bold\"\n                >\n                  {primaryCta.label}\n                  <ArrowRight className=\"ml-2 h-5 w-5\" />\n                </Link>\n              </Button>\n            ) : null}\n          </div>\n        )}\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM",
+  "type": "registry:block"
+}
