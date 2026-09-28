@@ -1,6 +1,6 @@
 {
   "name": "@ziwako/blocks",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "type": "module",
   "description": "Shared prop-ified marketing/layout blocks for the Ziwako ecosystem (web).",
   "exports": {
@@ -78,6 +78,11 @@
       "types": "./dist/blocks/audience-gallery-hero.d.ts",
       "import": "./dist/blocks/audience-gallery-hero.js",
       "default": "./dist/blocks/audience-gallery-hero.js"
+    },
+    "./headline-chips": {
+      "types": "./dist/blocks/headline-chips.d.ts",
+      "import": "./dist/blocks/headline-chips.js",
+      "default": "./dist/blocks/headline-chips.js"
     }
   },
   "files": [

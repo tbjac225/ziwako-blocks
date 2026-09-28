@@ -140,6 +140,17 @@
         }
       ],
       "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
+    },
+    {
+      "name": "headline-chips",
+      "type": "registry:block",
+      "title": "Headline Chips",
+      "description": "Typographic statement headline composed of inline chips: text, colored pills, avatars, images and icons (flat semantic colors, no gradient).",
+      "dependencies": ["@ziwako/ui"],
+      "files": [
+        { "path": "src/blocks/headline-chips.tsx", "type": "registry:block" }
+      ],
+      "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
     }
   ]
 }
