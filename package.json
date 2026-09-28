@@ -1,6 +1,6 @@
 {
   "name": "@ziwako/blocks",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "description": "Shared prop-ified marketing/layout blocks for the Ziwako ecosystem (web).",
   "exports": {
@@ -73,6 +73,11 @@
       "types": "./dist/blocks/stats.d.ts",
       "import": "./dist/blocks/stats.js",
       "default": "./dist/blocks/stats.js"
+    },
+    "./audience-gallery-hero": {
+      "types": "./dist/blocks/audience-gallery-hero.d.ts",
+      "import": "./dist/blocks/audience-gallery-hero.js",
+      "default": "./dist/blocks/audience-gallery-hero.js"
     }
   },
   "files": [
@@ -85,8 +90,8 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsup",
-    "registry": "shadcn build registry.json --output public/r",
+    "build": "tsup && node scripts/postbuild.mjs",
+    "registry": "npx --yes shadcn@latest build registry.json --output public/r",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build"
   },

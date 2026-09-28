@@ -16,6 +16,7 @@ export default defineConfig({
     'blocks/reveal': 'src/blocks/reveal.tsx',
     'blocks/section': 'src/blocks/section.tsx',
     'blocks/stats': 'src/blocks/stats.tsx',
+    'blocks/audience-gallery-hero': 'src/blocks/audience-gallery-hero.tsx',
   },
   format: ['esm'],
   dts: true,
