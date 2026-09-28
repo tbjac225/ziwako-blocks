@@ -18,6 +18,7 @@ export default defineConfig({
     'blocks/stats': 'src/blocks/stats.tsx',
     'blocks/audience-gallery-hero': 'src/blocks/audience-gallery-hero.tsx',
     'blocks/headline-chips': 'src/blocks/headline-chips.tsx',
+    'blocks/split-hero': 'src/blocks/split-hero.tsx',
   },
   format: ['esm'],
   dts: true,

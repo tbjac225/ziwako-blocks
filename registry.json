@@ -148,7 +148,20 @@
       "description": "Typographic statement headline composed of inline chips: text, colored pills, avatars, images and icons (flat semantic colors, no gradient).",
       "dependencies": ["@ziwako/ui"],
       "files": [
-        { "path": "src/blocks/headline-chips.tsx", "type": "registry:block" }
+        { "path": "src/blocks/headline-chips.tsx", "type": "registry:block" },
+        { "path": "src/blocks/headline-chips-text.tsx", "type": "registry:block" }
+      ],
+      "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
+    },
+    {
+      "name": "split-hero",
+      "type": "registry:block",
+      "title": "Split Hero",
+      "description": "Two-panel hero (content + media) as slots, in 3 variants (card/tinted/solid). Content panel can render an inline-chips headline; media panel accepts any component plus optional floating chips/images.",
+      "dependencies": ["@ziwako/ui"],
+      "files": [
+        { "path": "src/blocks/split-hero.tsx", "type": "registry:block" },
+        { "path": "src/blocks/headline-chips-text.tsx", "type": "registry:block" }
       ],
       "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
     }
