@@ -58,6 +58,13 @@ const COLUMN_CLASSES: Record<2 | 3 | 4 | 5, string> = {
   5: "grid-cols-2 md:grid-cols-5",
 }
 
+/**
+ * Hauteur de ligne par défaut du bento. Une cellule `col-span-2` reste ainsi à
+ * la même hauteur qu'une cellule simple (large mais pas plus haute), et une
+ * cellule `row-span-2` occupe deux hauteurs de ligne.
+ */
+const ROW_CLASSES = "auto-rows-[9rem] sm:auto-rows-[11rem] lg:auto-rows-[13rem]"
+
 const DEMO_ITEMS: GalleryItem[] = [
   {
     src: "https://placehold.co/600x900.png",
@@ -141,7 +148,7 @@ export function AudienceGalleryHero({
         <div
           className={cn(
             "mt-12 grid gap-3 md:mt-16 md:gap-4",
-            gridClassName ?? COLUMN_CLASSES[columns]
+            gridClassName ?? cn(COLUMN_CLASSES[columns], ROW_CLASSES)
           )}
         >
           {useFallback
@@ -181,7 +188,7 @@ function GalleryCell({
   return (
     <div
       className={cn(
-        "relative aspect-square overflow-hidden rounded-3xl bg-muted",
+        "relative h-full w-full overflow-hidden rounded-3xl bg-muted",
         className
       )}
     >

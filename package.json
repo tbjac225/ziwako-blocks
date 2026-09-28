@@ -1,6 +1,6 @@
 {
   "name": "@ziwako/blocks",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "description": "Shared prop-ified marketing/layout blocks for the Ziwako ecosystem (web).",
   "exports": {
