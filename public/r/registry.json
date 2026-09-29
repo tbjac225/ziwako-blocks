@@ -131,13 +131,27 @@
       "name": "audience-gallery-hero",
       "type": "registry:block",
       "title": "Audience Gallery Hero",
-      "description": "Marketing hero with a configurable image gallery (bento): badge, title, description, dual CTA and per-cell overlays (badge/icon/play/stat/cta). Grid occupancy configurable per breakpoint.",
+      "description": "Marketing hero with a configurable image gallery (bento): intro header (badge, title, description, dual CTA) and per-cell overlays (badge/icon/play/stat/cta). Grid occupancy configurable per breakpoint.",
       "dependencies": ["@ziwako/ui", "lucide-react"],
       "files": [
         {
           "path": "src/blocks/audience-gallery-hero.tsx",
           "type": "registry:block"
-        }
+        },
+        { "path": "src/blocks/intro-header.tsx", "type": "registry:block" },
+        { "path": "src/blocks/headline-chips-text.tsx", "type": "registry:block" }
+      ],
+      "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
+    },
+    {
+      "name": "intro-header",
+      "type": "registry:block",
+      "title": "Intro Header",
+      "description": "Section intro header: badge, rich title (inline chips/highlight), description and dual CTA. Center or left aligned. Compose above any content (e.g. bento-grid).",
+      "dependencies": ["@ziwako/ui"],
+      "files": [
+        { "path": "src/blocks/intro-header.tsx", "type": "registry:block" },
+        { "path": "src/blocks/headline-chips-text.tsx", "type": "registry:block" }
       ],
       "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
     },

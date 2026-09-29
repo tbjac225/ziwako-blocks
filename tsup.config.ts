@@ -20,6 +20,7 @@ export default defineConfig({
     'blocks/headline-chips': 'src/blocks/headline-chips.tsx',
     'blocks/split-hero': 'src/blocks/split-hero.tsx',
     'blocks/bento-grid': 'src/blocks/bento-grid.tsx',
+    'blocks/intro-header': 'src/blocks/intro-header.tsx',
   },
   format: ['esm'],
   dts: true,

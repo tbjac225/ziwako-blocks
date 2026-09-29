@@ -6,6 +6,9 @@ import { ArrowRight, ArrowUpRight, Play } from "lucide-react"
 import { Button } from "@ziwako/ui/button"
 import { cn } from "@ziwako/ui/utils"
 
+import { IntroHeader } from "./intro-header"
+import { type HeadlineSegment } from "./headline-chips-text"
+
 /** Overlays configurables posés sur une cellule de la galerie. */
 export type GalleryOverlay =
   | { type: "badge"; label: string }
@@ -33,8 +36,9 @@ export interface GalleryItem {
 
 export interface AudienceGalleryHeroProps {
   badge?: string
-  title: ReactNode
-  description?: ReactNode
+  /** Titre rich : `ReactNode` ou segments (`headline-chips` → chips/highlight). */
+  title: ReactNode | (string | HeadlineSegment)[]
+  description?: string
   primaryCta?: { label: string; href: string }
   secondaryCta?: { label: string; href: string }
   /** Cellules de la galerie. Si vide → grille de placeholders. */
@@ -110,40 +114,15 @@ export function AudienceGalleryHero({
   return (
     <section className={cn("py-16 md:py-24", className)}>
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          {badge ? (
-            <span className="inline-flex items-center rounded-full bg-muted px-3 py-1 text-xs font-medium tracking-wide text-muted-foreground uppercase">
-              {badge}
-            </span>
-          ) : null}
-          <h2 className="mt-4 text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl">
-            {title}
-          </h2>
-          {description ? (
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-              {description}
-            </p>
-          ) : null}
-          {(primaryCta || secondaryCta) && (
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              {primaryCta ? (
-                <Button size="lg" className="rounded-2xl px-6" asChild>
-                  <Link href={primaryCta.href}>{primaryCta.label}</Link>
-                </Button>
-              ) : null}
-              {secondaryCta ? (
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="rounded-2xl px-6"
-                  asChild
-                >
-                  <Link href={secondaryCta.href}>{secondaryCta.label}</Link>
-                </Button>
-              ) : null}
-            </div>
-          )}
-        </div>
+        <IntroHeader
+          badge={badge}
+          title={title}
+          description={description}
+          primaryCta={primaryCta}
+          secondaryCta={secondaryCta}
+          align="center"
+          size="xl"
+        />
 
         <div
           className={cn(
