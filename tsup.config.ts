@@ -19,6 +19,7 @@ export default defineConfig({
     'blocks/audience-gallery-hero': 'src/blocks/audience-gallery-hero.tsx',
     'blocks/headline-chips': 'src/blocks/headline-chips.tsx',
     'blocks/split-hero': 'src/blocks/split-hero.tsx',
+    'blocks/bento-grid': 'src/blocks/bento-grid.tsx',
   },
   format: ['esm'],
   dts: true,

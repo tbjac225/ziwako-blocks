@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bento-grid",
+  "title": "Bento Grid",
+  "description": "Responsive bento layout primitive: each cell is a slot (any component) with configurable column/row span. Columns configurable.",
+  "dependencies": [
+    "@ziwako/ui"
+  ],
+  "files": [
+    {
+      "path": "src/blocks/bento-grid.tsx",
+      "content": "import type { ReactNode } from \"react\"\n\nimport { cn } from \"@ziwako/ui/utils\"\n\nexport interface BentoCell {\n  /** SLOT — n'importe quel composant (carte, image, graphique, formulaire…). */\n  content: ReactNode\n  /**\n   * Occupation de la cellule : `col-span` / `row-span` / `aspect` / `translate`,\n   * sur n'importe quel breakpoint. ex. `\"lg:col-span-2 lg:row-span-2\"`.\n   */\n  className?: string\n}\n\nexport interface BentoGridProps {\n  cells: BentoCell[]\n  /**\n   * Nombre de colonnes (sucre). Ignoré si `gridClassName` est fourni.\n   * @default 3\n   */\n  columns?: 2 | 3 | 4 | 5 | 6\n  /** Template de grille complet (prioritaire). ex. `\"grid-cols-2 lg:grid-cols-3\"`. */\n  gridClassName?: string\n  /** Classes de base de chaque cellule. */\n  itemClassName?: string\n  className?: string\n}\n\nconst COLUMNS: Record<2 | 3 | 4 | 5 | 6, string> = {\n  2: \"grid-cols-1 sm:grid-cols-2\",\n  3: \"grid-cols-1 sm:grid-cols-2 lg:grid-cols-3\",\n  4: \"grid-cols-2 lg:grid-cols-4\",\n  5: \"grid-cols-2 md:grid-cols-5\",\n  6: \"grid-cols-2 md:grid-cols-6\",\n}\n\n/**\n * Primitive de mise en page « bento » : grille responsive dont **chaque cellule\n * est un slot** (n'importe quel composant) avec occupation configurable.\n * Le block ne rend que la grille — envelopper avec `Section` au besoin.\n */\nexport function BentoGrid({\n  cells,\n  columns = 3,\n  gridClassName,\n  itemClassName,\n  className,\n}: BentoGridProps) {\n  return (\n    <div\n      className={cn(\n        \"grid items-stretch gap-4\",\n        gridClassName ?? COLUMNS[columns],\n        className\n      )}\n    >\n      {cells.map((cell, index) => (\n        <div\n          key={index}\n          className={cn(\"h-full min-w-0\", itemClassName, cell.className)}\n        >\n          {cell.content}\n        </div>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM",
+  "type": "registry:block"
+}

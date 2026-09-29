@@ -65,6 +65,7 @@ interface SegmentBase {
 
 export type HeadlineSegment =
   | { type: "text"; value: string; className?: string }
+  | ({ type: "highlight"; value: string; className?: string } & SegmentBase)
   | ({ type: "pill"; value: string } & SegmentBase)
   | ({ type: "avatar"; src: string; alt?: string } & SegmentBase)
   | ({ type: "image"; src: string; alt?: string; className?: string } & SegmentBase)
@@ -93,6 +94,19 @@ export function HeadlineChipsText({ segments, className }: HeadlineChipsTextProp
             return (
               <span key={index} className={seg.className}>
                 {seg.value}{" "}
+              </span>
+            )
+          case "highlight":
+            return (
+              <span
+                key={index}
+                className={cn(
+                  "inline rounded-lg px-[0.15em] align-middle",
+                  chipStyle(seg.color ?? "blue", seg.tone ?? "subtle"),
+                  seg.className
+                )}
+              >
+                {seg.value}
               </span>
             )
           case "pill":

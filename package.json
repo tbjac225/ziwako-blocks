@@ -1,6 +1,6 @@
 {
   "name": "@ziwako/blocks",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "type": "module",
   "description": "Shared prop-ified marketing/layout blocks for the Ziwako ecosystem (web).",
   "exports": {
@@ -88,6 +88,11 @@
       "types": "./dist/blocks/split-hero.d.ts",
       "import": "./dist/blocks/split-hero.js",
       "default": "./dist/blocks/split-hero.js"
+    },
+    "./bento-grid": {
+      "types": "./dist/blocks/bento-grid.d.ts",
+      "import": "./dist/blocks/bento-grid.js",
+      "default": "./dist/blocks/bento-grid.js"
     }
   },
   "files": [
