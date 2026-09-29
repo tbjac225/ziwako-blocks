@@ -13,6 +13,13 @@ export interface IntroHeaderProps {
   description?: string
   primaryCta?: { label: string; href: string }
   secondaryCta?: { label: string; href: string }
+  /** Slot aligné à droite (actions). Active le layout "split". */
+  actions?: ReactNode
+  /**
+   * `stack` (défaut) : tout empilé.
+   * `split` : bloc titre à gauche, `actions` à droite.
+   */
+  layout?: "stack" | "split"
   align?: "center" | "left"
   size?: "md" | "lg" | "xl"
   className?: string
@@ -26,7 +33,7 @@ const SIZE_CLASSES: Record<NonNullable<IntroHeaderProps["size"]>, string> = {
 
 /**
  * En-tête d'introduction de section : badge, titre rich (chips/highlight),
- * description et double CTA. Centré ou aligné à gauche.
+ * description, double CTA et slot `actions` (layout split optionnel).
  */
 export function IntroHeader({
   badge,
@@ -34,19 +41,16 @@ export function IntroHeader({
   description,
   primaryCta,
   secondaryCta,
+  actions,
+  layout = "stack",
   align = "center",
   size = "lg",
   className,
 }: IntroHeaderProps) {
-  const isCenter = align === "center"
+  const isCenter = align === "center" && layout === "stack"
 
-  return (
-    <div
-      className={cn(
-        isCenter ? "mx-auto max-w-3xl text-center" : "max-w-3xl text-left",
-        className
-      )}
-    >
+  const titleBlock = (
+    <>
       {badge ? (
         <span className="inline-flex items-center rounded-full bg-muted px-3 py-1 text-xs font-medium tracking-wide text-muted-foreground uppercase">
           {badge}
@@ -59,11 +63,7 @@ export function IntroHeader({
           SIZE_CLASSES[size]
         )}
       >
-        {Array.isArray(title) ? (
-          <HeadlineChipsText segments={title} />
-        ) : (
-          title
-        )}
+        {Array.isArray(title) ? <HeadlineChipsText segments={title} /> : title}
       </h2>
 
       {description ? (
@@ -96,6 +96,32 @@ export function IntroHeader({
           ) : null}
         </div>
       ) : null}
+    </>
+  )
+
+  if (layout === "split" && actions) {
+    return (
+      <div
+        className={cn(
+          "flex flex-col gap-6 md:flex-row md:items-end md:justify-between",
+          className
+        )}
+      >
+        <div className="max-w-3xl">{titleBlock}</div>
+        <div className="flex shrink-0 items-center gap-3">{actions}</div>
+      </div>
+    )
+  }
+
+  return (
+    <div
+      className={cn(
+        isCenter ? "mx-auto max-w-3xl text-center" : "max-w-3xl text-left",
+        className
+      )}
+    >
+      {titleBlock}
+      {actions ? <div className="mt-6 flex items-center gap-3">{actions}</div> : null}
     </div>
   )
 }

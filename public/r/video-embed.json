@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "video-embed",
+  "title": "Video Embed",
+  "description": "Responsive video player: iframe (YouTube/Vimeo…) or HTML5 video with poster. aspect-video by default.",
+  "dependencies": [
+    "@ziwako/ui"
+  ],
+  "files": [
+    {
+      "path": "src/blocks/video-embed.tsx",
+      "content": "import { cn } from \"@ziwako/ui/utils\"\n\nexport interface VideoEmbedProps {\n  /** URL de la source (iframe YouTube/Vimeo ou fichier vidéo). */\n  src: string\n  /** `iframe` (défaut) ou `video` (HTML5 `<video controls>`). */\n  type?: \"iframe\" | \"video\"\n  poster?: string\n  title?: string\n  aspect?: string\n  className?: string\n}\n\n/**\n * Lecteur vidéo responsive : iframe (YouTube/Vimeo…) ou HTML5 `<video>`.\n * Ratio par défaut `aspect-video`.\n */\nexport function VideoEmbed({\n  src,\n  type = \"iframe\",\n  poster,\n  title,\n  aspect = \"aspect-video\",\n  className,\n}: VideoEmbedProps) {\n  return (\n    <div\n      className={cn(\n        \"relative w-full overflow-hidden rounded-3xl bg-muted\",\n        aspect,\n        className\n      )}\n    >\n      {type === \"video\" ? (\n        <video\n          src={src}\n          poster={poster}\n          controls\n          playsInline\n          className=\"size-full object-cover\"\n        />\n      ) : (\n        <iframe\n          src={src}\n          title={title ?? \"Video\"}\n          allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\"\n          allowFullScreen\n          loading=\"lazy\"\n          className=\"absolute inset-0 size-full\"\n        />\n      )}\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM",
+  "type": "registry:block"
+}

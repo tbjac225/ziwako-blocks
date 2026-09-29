@@ -1,6 +1,6 @@
 {
   "name": "@ziwako/blocks",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "type": "module",
   "description": "Shared prop-ified marketing/layout blocks for the Ziwako ecosystem (web).",
   "exports": {
@@ -98,6 +98,31 @@
       "types": "./dist/blocks/intro-header.d.ts",
       "import": "./dist/blocks/intro-header.js",
       "default": "./dist/blocks/intro-header.js"
+    },
+    "./media-card": {
+      "types": "./dist/blocks/media-card.d.ts",
+      "import": "./dist/blocks/media-card.js",
+      "default": "./dist/blocks/media-card.js"
+    },
+    "./video-embed": {
+      "types": "./dist/blocks/video-embed.d.ts",
+      "import": "./dist/blocks/video-embed.js",
+      "default": "./dist/blocks/video-embed.js"
+    },
+    "./tours-showcase": {
+      "types": "./dist/blocks/tours-showcase.d.ts",
+      "import": "./dist/blocks/tours-showcase.js",
+      "default": "./dist/blocks/tours-showcase.js"
+    },
+    "./editorial-strip": {
+      "types": "./dist/blocks/editorial-strip.d.ts",
+      "import": "./dist/blocks/editorial-strip.js",
+      "default": "./dist/blocks/editorial-strip.js"
+    },
+    "./video-feature": {
+      "types": "./dist/blocks/video-feature.d.ts",
+      "import": "./dist/blocks/video-feature.js",
+      "default": "./dist/blocks/video-feature.js"
     }
   },
   "files": [

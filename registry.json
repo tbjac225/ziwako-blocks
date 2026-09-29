@@ -189,6 +189,68 @@
         { "path": "src/blocks/bento-grid.tsx", "type": "registry:block" }
       ],
       "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
+    },
+    {
+      "name": "media-card",
+      "type": "registry:block",
+      "title": "Media Card",
+      "description": "Image card with bottom overlay (title/description/price), optional badge and corner icon action. Whole card clickable via href.",
+      "dependencies": ["@ziwako/ui", "lucide-react"],
+      "files": [
+        { "path": "src/blocks/media-card.tsx", "type": "registry:block" }
+      ],
+      "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
+    },
+    {
+      "name": "video-embed",
+      "type": "registry:block",
+      "title": "Video Embed",
+      "description": "Responsive video player: iframe (YouTube/Vimeo…) or HTML5 video with poster. aspect-video by default.",
+      "dependencies": ["@ziwako/ui"],
+      "files": [
+        { "path": "src/blocks/video-embed.tsx", "type": "registry:block" }
+      ],
+      "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
+    },
+    {
+      "name": "tours-showcase",
+      "type": "registry:block",
+      "title": "Tours Showcase",
+      "description": "Preset: intro header (title left + actions right) above a grid of media cards.",
+      "dependencies": ["@ziwako/ui", "lucide-react"],
+      "files": [
+        { "path": "src/blocks/tours-showcase.tsx", "type": "registry:block" },
+        { "path": "src/blocks/intro-header.tsx", "type": "registry:block" },
+        { "path": "src/blocks/media-card.tsx", "type": "registry:block" },
+        { "path": "src/blocks/headline-chips-text.tsx", "type": "registry:block" }
+      ],
+      "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
+    },
+    {
+      "name": "editorial-strip",
+      "type": "registry:block",
+      "title": "Editorial Strip",
+      "description": "Preset: eyebrow, statement (chips/highlight), image strip, then an action row (note + CTA + icon button).",
+      "dependencies": ["@ziwako/ui", "lucide-react"],
+      "files": [
+        { "path": "src/blocks/editorial-strip.tsx", "type": "registry:block" },
+        { "path": "src/blocks/headline-chips-text.tsx", "type": "registry:block" }
+      ],
+      "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
+    },
+    {
+      "name": "video-feature",
+      "type": "registry:block",
+      "title": "Video Feature",
+      "description": "Preset: eyebrow + title (left) + note (right) above a video embed.",
+      "dependencies": ["@ziwako/ui"],
+      "files": [
+        { "path": "src/blocks/video-feature.tsx", "type": "registry:block" },
+        { "path": "src/blocks/intro-header.tsx", "type": "registry:block" },
+        { "path": "src/blocks/video-embed.tsx", "type": "registry:block" },
+        { "path": "src/blocks/headline-chips-text.tsx", "type": "registry:block" }
+      ],
+      "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM"
     }
   ]
 }

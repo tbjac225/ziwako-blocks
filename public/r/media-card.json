@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "media-card",
+  "title": "Media Card",
+  "description": "Image card with bottom overlay (title/description/price), optional badge and corner icon action. Whole card clickable via href.",
+  "dependencies": [
+    "@ziwako/ui",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "src/blocks/media-card.tsx",
+      "content": "import type { ComponentType } from \"react\"\nimport Link from \"next/link\"\nimport Image from \"next/image\"\nimport { ArrowUpRight } from \"lucide-react\"\n\nimport { Button } from \"@ziwako/ui/button\"\nimport { cn } from \"@ziwako/ui/utils\"\n\nexport interface MediaCardAction {\n  icon?: ComponentType<{ className?: string }>\n  label?: string\n  href?: string\n}\n\nexport interface MediaCardProps {\n  src: string\n  alt: string\n  title: string\n  description?: string\n  price?: string\n  priceSuffix?: string\n  badge?: string\n  action?: MediaCardAction\n  href?: string\n  aspect?: string\n  className?: string\n}\n\n/**\n * Carte média : image plein cadre, overlay titre/description/prix en bas,\n * action (icône) en haut-droite. Carte entière cliquable si `href`.\n */\nexport function MediaCard({\n  src,\n  alt,\n  title,\n  description,\n  price,\n  priceSuffix,\n  badge,\n  action,\n  href,\n  aspect = \"aspect-[3/4]\",\n  className,\n}: MediaCardProps) {\n  const ActionIcon = action?.icon ?? ArrowUpRight\n\n  const inner = (\n    <>\n      <Image\n        src={src}\n        alt={alt}\n        fill\n        sizes=\"(min-width: 1024px) 25vw, 50vw\"\n        className=\"object-cover transition-transform duration-500 group-hover:scale-105\"\n      />\n      <div className=\"absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent\" />\n\n      {badge ? (\n        <span className=\"absolute top-3 left-3 rounded-full bg-background/90 px-3 py-1 text-xs font-semibold text-foreground backdrop-blur\">\n          {badge}\n        </span>\n      ) : null}\n\n      {action ? (\n        <div className=\"absolute top-3 right-3\">\n          <Button\n            variant=\"secondary\"\n            size=\"icon\"\n            className=\"rounded-full bg-background/90 text-foreground backdrop-blur hover:bg-background\"\n            aria-label={action.label ?? title}\n            asChild={!!action.href}\n          >\n            {action.href ? (\n              <Link href={action.href}>\n                <ActionIcon className=\"size-4\" />\n              </Link>\n            ) : (\n              <ActionIcon className=\"size-4\" />\n            )}\n          </Button>\n        </div>\n      ) : null}\n\n      <div className=\"absolute inset-x-0 bottom-0 p-4 text-white\">\n        <p className=\"text-lg font-semibold leading-tight\">{title}</p>\n        {description ? (\n          <p className=\"mt-1 text-sm text-white/80\">{description}</p>\n        ) : null}\n        {price ? (\n          <p className=\"mt-2 text-sm text-white/80\">\n            <span className=\"text-lg font-bold text-white\">{price}</span>\n            {priceSuffix ? ` ${priceSuffix}` : \"\"}\n          </p>\n        ) : null}\n      </div>\n    </>\n  )\n\n  const classes = cn(\n    \"group relative block overflow-hidden rounded-3xl bg-muted\",\n    aspect,\n    className\n  )\n\n  if (href) {\n    return (\n      <Link href={href} className={classes}>\n        {inner}\n      </Link>\n    )\n  }\n\n  return <div className={classes}>{inner}</div>\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM",
+  "type": "registry:block"
+}
