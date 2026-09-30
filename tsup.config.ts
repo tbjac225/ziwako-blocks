@@ -26,6 +26,7 @@ export default defineConfig({
     'blocks/tours-showcase': 'src/blocks/tours-showcase.tsx',
     'blocks/editorial-strip': 'src/blocks/editorial-strip.tsx',
     'blocks/video-feature': 'src/blocks/video-feature.tsx',
+    'blocks/image-arc': 'src/blocks/image-arc.tsx',
   },
   format: ['esm'],
   dts: true,

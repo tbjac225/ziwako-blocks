@@ -1,6 +1,6 @@
 {
   "name": "@ziwako/blocks",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "type": "module",
   "description": "Shared prop-ified marketing/layout blocks for the Ziwako ecosystem (web).",
   "exports": {
@@ -123,6 +123,11 @@
       "types": "./dist/blocks/video-feature.d.ts",
       "import": "./dist/blocks/video-feature.js",
       "default": "./dist/blocks/video-feature.js"
+    },
+    "./image-arc": {
+      "types": "./dist/blocks/image-arc.d.ts",
+      "import": "./dist/blocks/image-arc.js",
+      "default": "./dist/blocks/image-arc.js"
     }
   },
   "files": [

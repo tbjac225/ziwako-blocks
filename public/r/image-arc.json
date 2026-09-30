@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "image-arc",
+  "title": "Image Arc",
+  "description": "Fan/arc of portrait images (rotation + vertical offset by position). Visual primitive, no section.",
+  "dependencies": [
+    "@ziwako/ui"
+  ],
+  "files": [
+    {
+      "path": "src/blocks/image-arc.tsx",
+      "content": "import Image from \"next/image\"\n\nimport { cn } from \"@ziwako/ui/utils\"\n\nexport interface ArcImage {\n  src: string\n  alt: string\n}\n\nexport interface ImageArcProps {\n  items: ArcImage[]\n  /** Amplitude de rotation des extrémités (deg). @default 10 */\n  curve?: number\n  /** Amplitude du décalage vertical des extrémités (px). @default 48 */\n  lift?: number\n  /** Nombre d'items visibles au centre sur mobile. @default 3 */\n  maxMobile?: number\n  /** Classes par image (taille/ratio). */\n  itemClassName?: string\n  className?: string\n}\n\n/**\n * Éventail de portraits : range les images en **arc** (rotation + décalage\n * vertical selon la position, centre plus haut, bords plus bas/tournés).\n * Primitive visuelle — pas de section/padding.\n */\nexport function ImageArc({\n  items,\n  curve = 10,\n  lift = 48,\n  maxMobile = 3,\n  itemClassName,\n  className,\n}: ImageArcProps) {\n  const count = items.length\n  const mid = (count - 1) / 2\n\n  return (\n    <div\n      className={cn(\n        \"flex w-full items-end justify-center overflow-hidden\",\n        className\n      )}\n    >\n      {items.map((item, index) => {\n        const t = mid === 0 ? 0 : (index - mid) / mid // -1 … 1\n        const rotate = t * curve\n        const translateY = Math.abs(t) ** 2 * lift\n        const distance = Math.abs(index - mid)\n        const hiddenOnMobile = distance > Math.floor(maxMobile / 2)\n\n        return (\n          <div\n            key={index}\n            style={{\n              transform: `rotate(${rotate}deg) translateY(${translateY}px)`,\n              zIndex: Math.round(count - distance),\n            }}\n            className={cn(\n              \"relative aspect-[3/4] w-24 shrink-0 origin-bottom overflow-hidden rounded-2xl border border-border/50 bg-muted shadow-sm sm:w-32 md:w-40\",\n              \"-ml-4 first:ml-0 sm:-ml-5\",\n              hiddenOnMobile && \"hidden sm:block\",\n              itemClassName\n            )}\n          >\n            <Image\n              src={item.src}\n              alt={item.alt}\n              fill\n              sizes=\"(min-width: 768px) 160px, 96px\"\n              className=\"object-cover\"\n            />\n          </div>\n        )\n      })}\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ],
+  "docs": "https://app.affine.pro/workspace/e93d663d-59e9-4938-a675-aaafe2b51b4a/qgPU6ff8fM",
+  "type": "registry:block"
+}
